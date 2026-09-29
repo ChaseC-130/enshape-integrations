@@ -11,7 +11,7 @@ Connection metadata and setup instructions for Enshape's hosted, proprietary MCP
 
 ## Connect your own account
 
-Each person connects their own Enshape account from their own assistant. Enshape provides diary tools; it does not run model inference or route customer requests through the developer's personal agent account. Your assistant provider's plan and usage rules apply.
+Each person connects their own Enshape account from their own assistant. This MCP integration provides diary tools; it does not run model inference or route customer requests through the developer's personal agent account. Your assistant provider's plan and usage rules apply.
 
 For Codex CLI:
 
