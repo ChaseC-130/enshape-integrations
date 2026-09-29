@@ -1,0 +1,9 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.enshapeapp/enshape",
+  "title": "Enshape",
+  "description": "Read your private Enshape diary and log meals through scoped account authorization.",
+  "version": "1.0.0",
+  "websiteUrl": "https://enshapeapp.com/integrations",
+  "remotes": [{ "type": "streamable-http", "url": "https://enshapeapp.com/mcp" }]
+}
