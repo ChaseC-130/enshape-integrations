@@ -4,6 +4,7 @@ Connection metadata and setup instructions for Enshape's hosted, proprietary MCP
 
 - Website and account setup: https://enshapeapp.com/integrations
 - Remote Streamable HTTP endpoint: `https://enshapeapp.com/mcp`
+- Claude community connector: https://claude.ai/directory/enshape
 - Official MCP Registry: https://registry.modelcontextprotocol.io/v0.1/servers/com.enshapeapp%2Fenshape/versions/1.0.0
 - Support: https://enshapeapp.com/feedback
 - Privacy: https://enshapeapp.com/privacy-policy
@@ -27,7 +28,7 @@ claude mcp add --transport http --scope user enshape https://enshapeapp.com/mcp
 claude mcp login enshape
 ```
 
-For Claude web/mobile, add that URL in the account's custom connector settings and complete Enshape OAuth. Claude Code and web/mobile connections have separate authentication.
+For Claude web/mobile, select [Enshape in the connector directory](https://claude.ai/directory/enshape), or add the server URL in the account's custom connector settings, then complete Enshape OAuth. Claude Code and web/mobile connections have separate authentication.
 
 Eligible Gemini accounts can add that URL through Connected Apps → Custom apps. Google controls eligibility and available conversation modes. Review Google's notice and Enshape's account/scopes before approving.
 
@@ -57,6 +58,6 @@ Authenticated protocol requests are capped at 120/minute and 600/day per account
 
 ## Availability
 
-The remote service and official MCP Registry entry are live. Production natural-language Codex and Claude web tests verified diary reads, saving/retrying a synthetic entry without duplication, and Claude's recent-food tool. OpenAI and Claude directory review submissions remain in preparation.
+The remote service and official MCP Registry entry are live. Production natural-language Codex and Claude web tests verified diary reads, saving/retrying a synthetic entry without duplication, and Claude's recent-food tool. Claude has approved Enshape as a community connector, and its submission portal now shows Published. New listings can take up to an hour to appear in the public directory. OpenAI directory review submission remains in preparation.
 
 iOS 26.5 Simulator Safari onboarding/sign-in layout was checked. Latest-iOS, native app synchronization and each voice mode still require device validation. Google AppFunctions' early-access registration is currently closed; no acceptance or directory approval is claimed.
