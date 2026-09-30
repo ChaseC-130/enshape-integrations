@@ -43,6 +43,12 @@ Example: “Log two servings of oats for breakfast on September 29, 2026. Per se
 
 Provide all five nutrition values and the intended date/portion. Estimates need explicit approval and are labeled. Entries can be checked in the Enshape web or mobile diary. The MCP exposes no deletion, public-catalog publication or access to other accounts.
 
+## Free and Premium allowances
+
+Free Enshape accounts receive **20 diary tool calls per UTC day**, shared across every connected assistant. Each valid diary read, recent-food lookup or meal-save attempt consumes one call; retries also count. OAuth setup, initialization and tool discovery do not consume this allowance. Usage resets at midnight UTC and is visible in [Assistant connections](https://enshapeapp.com/assistant-connections).
+
+Enshape Premium provides higher usage through the existing mobile app subscription. Manage or restore Premium while signed into that same Enshape account. Higher usage requires a server-verified subscription; client flags cannot bypass the limit. Premium remains subject to the overall **600 authenticated protocol requests per day per account**, including tool calls and protocol setup/discovery requests. No MCP tool initiates a purchase or processes a payment.
+
 ## Security and capacity
 
 The service requires scoped OAuth with S256 PKCE and exact registered callbacks. Tokens are resource-bound; access expires after one hour and rotating refresh credentials have a 30-day absolute expiry. Only credential hashes persist. Refresh replay, connection revocation and account-session revocation invalidate access.
