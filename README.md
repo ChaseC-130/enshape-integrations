@@ -39,6 +39,7 @@ The authorization window uses existing Google/Apple Enshape sign-in. Check the i
 - `get_meals`: read the connected account's private diary for an explicit local calendar date.
 - `recent_foods`: retrieve up to 50 recent entries with saved nutrition.
 - `log_meal`: save one explicitly requested private entry with per-serving nutrition and a request ID for safe retries.
+- `get_account_status`: check the connected account’s server-verified Enshape plan, diary usage, remaining Free calls, UTC reset and request caps.
 
 Example: “Log two servings of oats for breakfast on September 29, 2026. Per serving: 150 calories, 5g protein, 27g carbs, 3g fat and 4g fiber; serving size 40g, from my food label.”
 
@@ -46,9 +47,13 @@ Provide all five nutrition values and the intended date/portion. Estimates need 
 
 ## Free and Premium allowances
 
-Free Enshape accounts receive **20 diary tool calls per UTC day**, shared across every connected assistant. Each valid diary read, recent-food lookup or meal-save attempt consumes one call; retries also count. OAuth setup, initialization and tool discovery do not consume this allowance. Usage resets at midnight UTC and is visible in [Assistant connections](https://enshapeapp.com/assistant-connections).
+Free Enshape accounts receive **20 diary tool calls per UTC day**, shared across every connected assistant. Each valid diary read, recent-food lookup or meal-save attempt consumes one call; retries also count. OAuth setup, initialization, tool discovery and `get_account_status` do not consume this diary allowance; all MCP requests still count toward protocol caps. Usage resets at midnight UTC and is visible in [Assistant connections](https://enshapeapp.com/assistant-connections).
 
 Enshape Premium provides higher usage through the existing mobile app subscription. Manage or restore Premium while signed into that same Enshape account. Higher usage requires a server-verified subscription; client flags cannot bypass the limit. Premium remains subject to the overall **600 authenticated protocol requests per day per account**, including tool calls and protocol setup/discovery requests. No MCP tool initiates a purchase or processes a payment.
+
+Ask your agent “Check my Enshape plan and assistant usage” to use the standard status tool. The same connected Enshape account receives the same format across hosts. The plan is `free`, `premium`, or `unknown` with a nullable `premium` value; `unknown` means verification is unavailable and never grants extra diary access. Successful entitlement checks are cached for up to ten minutes. Status is available after the Free diary allowance is exhausted, until a protocol cap is reached. Check on request or quota recovery instead of polling before each meal.
+
+For an existing Claude connection, use Settings → Connectors → Enshape → More options → **Refresh tools list**, then start a new chat. Existing conversations can retain the old inventory. Other hosts may also need to refresh their remote tool list.
 
 ## Security and capacity
 
@@ -58,6 +63,6 @@ Authenticated protocol requests are capped at 120/minute and 600/day per account
 
 ## Availability
 
-The remote service and official MCP Registry entry are live. Production natural-language Codex and Claude web tests verified diary reads, saving/retrying a synthetic entry without duplication, and Claude's recent-food tool. Claude has approved Enshape as a community connector, and its submission portal now shows Published. New listings can take up to an hour to appear in the public directory. OpenAI directory review submission remains in preparation.
+The remote service and official MCP Registry entry are live. Production natural-language Codex and Claude web tests verified diary reads, saving/retrying a synthetic entry without duplication, and Claude's recent-food tool. Claude has approved Enshape as a community connector, and its submission portal now shows Published. New listings can take up to an hour to appear in the public directory. Live `get_account_status` calls also passed in Codex and Claude web after tool refresh. Premium-success and provider-outage behavior were verified with local fixtures, without buying or changing a real subscription. OpenAI has an uploaded, domain-verified draft with skill checks passed; review submission is still pending connection approval, saved-version tests and owner policy attestations.
 
 iOS 26.5 Simulator Safari onboarding/sign-in layout was checked. Latest-iOS, native app synchronization and each voice mode still require device validation. Google AppFunctions' early-access registration is currently closed; no acceptance or directory approval is claimed.
