@@ -5,7 +5,7 @@ Connection metadata and setup instructions for Enshape's hosted, proprietary MCP
 - Website and account setup: https://enshapeapp.com/integrations
 - Remote Streamable HTTP endpoint: `https://enshapeapp.com/mcp`
 - Claude community connector: https://claude.ai/directory/enshape
-- Official MCP Registry: https://registry.modelcontextprotocol.io/v0.1/servers/com.enshapeapp%2Fenshape/versions/1.0.0
+- Official MCP Registry: https://registry.modelcontextprotocol.io/v0.1/servers/com.enshapeapp%2Fenshape/versions/latest
 - Support: https://enshapeapp.com/feedback
 - Privacy: https://enshapeapp.com/privacy-policy
 - Terms: https://enshapeapp.com/terms-and-conditions
@@ -31,6 +31,8 @@ claude mcp login enshape
 For Claude web/mobile, select [Enshape in the connector directory](https://claude.ai/directory/enshape), or add the server URL in the account's custom connector settings, then complete Enshape OAuth. Claude Code and web/mobile connections have separate authentication.
 
 Eligible Gemini accounts can add that URL through Connected Apps → Custom apps. Google controls eligibility and available conversation modes. Review Google's notice and Enshape's account/scopes before approving.
+
+Clients can initialize the server and list tool schemas before connecting an account. Every tool call requires an Enshape OAuth grant. After sign-in, the tool list reflects the scopes the user approved.
 
 The authorization window uses existing Google/Apple Enshape sign-in. Check the intended Enshape account, callback origin and diary permissions. Revoke a connection at https://enshapeapp.com/assistant-connections. Do not configure a shared developer account or paste Enshape session tokens into assistant configuration.
 

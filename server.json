@@ -3,7 +3,14 @@
   "name": "com.enshapeapp/enshape",
   "title": "Enshape",
   "description": "Read your private Enshape diary and log meals through scoped account authorization.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://enshapeapp.com/integrations",
+  "repository": {
+    "url": "https://github.com/ChaseC-130/enshape-integrations",
+    "source": "github"
+  },
+  "icons": [
+    { "src": "https://enshapeapp.com/icon.png", "mimeType": "image/png", "sizes": ["1024x1024"] }
+  ],
   "remotes": [{ "type": "streamable-http", "url": "https://enshapeapp.com/mcp" }]
 }
